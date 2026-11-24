@@ -7,27 +7,39 @@
 <title>Léo Market Angola</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f5f6f8;color:#20242b}
+body{margin:0;font-family:Arial,sans-serif;background:#f5f7f6;color:#20242b}
 header{background:#087b45;color:white;padding:20px}
-.logo{font-size:25px;font-weight:bold}
+.logo{font-size:23px;font-weight:bold}
 header p{margin-bottom:0}
+nav{display:flex;gap:18px;flex-wrap:wrap;margin-top:15px}
+nav a{color:white;text-decoration:none;font-size:14px}
 .search{padding:15px}
-.search input{width:100%;padding:14px;border:1px solid #ddd;border-radius:10px;font-size:16px}
-.hero{margin:15px;background:#087b45;color:white;padding:28px 20px;border-radius:15px}
-.hero h1{font-size:27px}
-.hero p{line-height:1.5}
-.hero button{background:#ffd43b;border:0;padding:13px 20px;border-radius:8px;font-weight:bold}
+.search input{width:100%;padding:15px;border:1px solid #ddd;border-radius:10px;font-size:16px}
+.hero{margin:15px;background:linear-gradient(135deg,#087b45,#075c35);color:white;padding:30px 22px;border-radius:16px}
+.hero h1{font-size:29px}
+.hero p{line-height:1.6}
+button{cursor:pointer}
+.hero button,.main-btn{background:#ffd43b;color:#20242b;border:0;padding:13px 20px;border-radius:8px;font-weight:bold}
 section{padding:15px}
 h2{font-size:21px}
-.categories{display:flex;gap:10px;overflow:auto}
-.category{background:white;padding:15px;border-radius:10px;min-width:110px;text-align:center}
+.categories{display:flex;gap:10px;overflow-x:auto}
+.category{background:white;padding:16px;border-radius:12px;min-width:110px;text-align:center;box-shadow:0 2px 8px #00000008}
 .products{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.product{background:white;border-radius:12px;padding:12px}
-.product .photo{background:#e5eee9;height:110px;display:flex;align-items:center;justify-content:center;font-size:42px;border-radius:8px}
+.product{background:white;border-radius:12px;padding:12px;box-shadow:0 2px 8px #0000000b}
+.photo{background:#e5eee9;height:110px;display:flex;align-items:center;justify-content:center;font-size:43px;border-radius:8px}
 .product h3{font-size:15px}
 .price{color:#087b45;font-weight:bold}
-.product button{width:100%;padding:10px;background:#087b45;color:white;border:0;border-radius:7px}
+.product button{width:100%;padding:11px;background:#087b45;color:white;border:0;border-radius:7px}
+.info{background:white;border-radius:13px;padding:20px;margin:15px 0}
+.info p{line-height:1.6}
+.yellow{background:#fff4c2}
 footer{background:#20242b;color:white;text-align:center;padding:25px;margin-top:25px}
+small{color:#777}
+@media(min-width:700px){
+ .products{grid-template-columns:repeat(4,1fr)}
+ .hero{padding:55px}
+ .hero h1{font-size:38px}
+}
 </style>
 </head>
 <body>
@@ -35,82 +47,122 @@ footer{background:#20242b;color:white;text-align:center;padding:25px;margin-top:
 <header>
 <div class="logo">🇦🇴 LÉO MARKET ANGOLA</div>
 <p>O mercado de todos os angolanos!</p>
+<nav>
+<a href="#inicio">Início</a>
+<a href="#categorias">Categorias</a>
+<a href="#produtos">Produtos</a>
+<a href="#vendedores">Vendedores</a>
+<a href="#afiliados">Afiliados</a>
+</nav>
 </header>
 
 <div class="search">
-<input id="search" type="text" placeholder="Pesquisar produtos..." oninput="pesquisar()">
+<input id="search" type="text"
+placeholder="🔎 Pesquisar produtos..."
+oninput="pesquisar()">
 </div>
 
-<div class="hero">
+<div class="hero" id="inicio">
 <h1>Bem-vindo ao Léo Market!</h1>
-<p>Compra, vende e ganha dinheiro através do nosso marketplace.</p>
-<button onclick="document.getElementById('produtos').scrollIntoView()">Explorar produtos</button>
+<p>Compra, vende e cresce connosco. Descobre produtos, encontra vendedores e faz parte do novo mercado digital de Angola.</p>
+<button onclick="document.getElementById('produtos').scrollIntoView({behavior:'smooth'})">
+Explorar produtos
+</button>
 </div>
 
-<section>
-<h2>Categorias</h2>
+<section id="categorias">
+<h2>Comprar por categorias</h2>
 <div class="categories">
 <div class="category">📱<br>Telefones</div>
 <div class="category">👕<br>Moda</div>
 <div class="category">💻<br>Informática</div>
 <div class="category">🏠<br>Casa</div>
 <div class="category">🚗<br>Automóveis</div>
+<div class="category">👟<br>Calçados</div>
 </div>
 </section>
 
 <section id="produtos">
 <h2>Produtos em destaque</h2>
 <div class="products" id="lista">
+
 <div class="product">
 <div class="photo">📱</div>
-<h3>Smartphone</h3>
+<h3>Smartphones</h3>
 <p class="price">Preço sob consulta</p>
-<button onclick="contactar()">Tenho interesse</button>
+<button onclick="interesse('Smartphones')">Tenho interesse</button>
 </div>
+
 <div class="product">
 <div class="photo">👟</div>
-<h3>Calçado</h3>
+<h3>Calçados</h3>
 <p class="price">Preço sob consulta</p>
-<button onclick="contactar()">Tenho interesse</button>
+<button onclick="interesse('Calçados')">Tenho interesse</button>
 </div>
+
 <div class="product">
 <div class="photo">💻</div>
-<h3>Computador</h3>
+<h3>Computadores</h3>
 <p class="price">Preço sob consulta</p>
-<button onclick="contactar()">Tenho interesse</button>
+<button onclick="interesse('Computadores')">Tenho interesse</button>
 </div>
+
 <div class="product">
 <div class="photo">⌚</div>
-<h3>Relógio</h3>
+<h3>Relógios</h3>
 <p class="price">Preço sob consulta</p>
-<button onclick="contactar()">Tenho interesse</button>
+<button onclick="interesse('Relógios')">Tenho interesse</button>
 </div>
+
+</div>
+</section>
+
+<section id="vendedores">
+<div class="info">
+<h2>🏪 Queres vender connosco?</h2>
+<p>Junta-te ao Léo Market Angola e apresenta os teus produtos a clientes de todo o país.</p>
+<button class="main-btn" onclick="cadastro('vendedor')">Quero ser vendedor</button>
+</div>
+</section>
+
+<section id="afiliados">
+<div class="info yellow">
+<h2>🤝 Torna-te nosso afiliado!</h2>
+<p>Participa no nosso programa de afiliados e divulga produtos do marketplace.</p>
+<button class="main-btn" onclick="cadastro('afiliado')">Quero ser afiliado</button>
 </div>
 </section>
 
 <section>
-<div class="hero">
-<h2>Queres vender connosco?</h2>
-<p>Junta-te ao Léo Market Angola como vendedor ou afiliado.</p>
-<button onclick="alert('Em breve: cadastro de vendedores!')">Quero participar</button>
+<div class="info">
+<h2>Sobre o Léo Market Angola</h2>
+<p>Uma plataforma digital criada para aproximar compradores, vendedores e afiliados em Angola.</p>
+<p><strong>Comprar • Vender • Crescer</strong></p>
 </div>
 </section>
 
 <footer>
-<strong>Léo Market Angola</strong>
+<strong>LÉO MARKET ANGOLA 🇦🇴</strong>
+<p>Administrador principal: Leo Da Judeia</p>
 <p>Comprar • Vender • Crescer</p>
 <p>© 2026 - Todos os direitos reservados</p>
+<small>Plataforma em desenvolvimento.</small>
 </footer>
 
 <script>
-function contactar(){
-alert("Obrigado pelo interesse! O contacto com o vendedor estará disponível em breve.");
-}
 function pesquisar(){
-let termo=document.getElementById("search").value.toLowerCase();
-document.querySelectorAll(".product").forEach(p=>{
-p.style.display=p.innerText.toLowerCase().includes(termo)?"block":"none";
-});
+ let termo=document.getElementById("search").value.toLowerCase();
+ document.querySelectorAll(".product").forEach(p=>{
+  p.style.display=p.innerText.toLowerCase().includes(termo)?"block":"none";
+ });
+}
+
+function interesse(produto){
+ alert("Obrigado pelo interesse em "+produto+"! O contacto com vendedores será disponibilizado na próxima fase.");
+}
+
+function cadastro(tipo){
+ alert("O cadastro de "+tipo+" será disponibilizado na próxima fase, depois da ligação segura ao Supabase.");
 }
 </script>
 
